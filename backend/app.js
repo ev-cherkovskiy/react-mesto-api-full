@@ -5,6 +5,10 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 // Подключение celebrate
 const { errors, Joi, celebrate } = require('celebrate');
+
+//
+const cors = require('cors');
+
 // Подключение мидлвэра с авторизацией
 const auth = require('./middlewares/auth');
 // Подключение логгеров
@@ -22,8 +26,7 @@ const {
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 
-//
-const cors = require('cors');
+
 
 // Инициация приложения и порта подключения
 const app = express();
