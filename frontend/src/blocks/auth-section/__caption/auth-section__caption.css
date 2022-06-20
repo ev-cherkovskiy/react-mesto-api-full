@@ -1,0 +1,9 @@
+.auth-section__caption {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.21;
+    margin-top: 15px;
+}

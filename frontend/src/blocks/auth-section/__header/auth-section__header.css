@@ -1,0 +1,17 @@
+.auth-section__header {
+    font-size: 24px;
+    line-height: 1.21;
+    font-weight: 900;
+    /* align-self: flex-start; */
+    margin: 0;
+    margin-top: 60px;
+    padding: 0 36px 50px;
+}
+
+@media screen and (max-width: 450px) {
+    .auth-section__header {
+        font-size: 18px;
+        margin-top: 25px;
+        padding: 0 22px 75px;
+    }
+}

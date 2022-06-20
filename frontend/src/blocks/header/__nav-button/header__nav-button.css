@@ -1,0 +1,29 @@
+.header__nav-button {
+    /* padding-top: 45px;
+    margin: 0 auto;
+    max-width: 880px;
+    border-bottom: rgba(84, 84, 84, .7) 1px solid;
+    box-sizing: border-box; */
+    /* display: flex; */
+    /* justify-self: flex-end; */
+    
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: opacity .2s ease-out;
+    cursor: pointer;
+
+}
+
+/* @media screen and (max-width: 500px) {
+    .header {
+        padding-top: 28px;
+    }
+} */
+
+.header__nav-button:hover {
+    opacity: 0.6;
+}

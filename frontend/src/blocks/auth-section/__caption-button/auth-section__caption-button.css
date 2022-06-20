@@ -1,0 +1,14 @@
+.auth-section__caption-button {
+    color: #FFFFFF;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    transition: opacity .2s ease-out;
+    cursor: pointer;
+}
+
+.auth-section__caption-button:hover {
+    opacity: 0.6;
+}

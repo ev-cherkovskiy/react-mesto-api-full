@@ -1,0 +1,13 @@
+.form__input_dark {
+    border-bottom: 2px solid #CCCCCC;
+    background-color: transparent;
+    color: #FFFFFF
+}
+
+.form__input_dark::placeholder {
+    color: #CCCCCC;
+}
+
+.form__input_dark:last-of-type {
+    margin-bottom: 216px;
+}

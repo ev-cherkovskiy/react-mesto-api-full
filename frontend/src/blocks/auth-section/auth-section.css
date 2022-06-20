@@ -1,0 +1,20 @@
+.auth-section {
+    /* background-color: #ffffff; */
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 0 auto;
+    width: 430px;
+    color: #FFFFFF;
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15); */
+    position: relative;
+
+    min-height: calc(100vh - 115px - 82px);
+}
+
+@media  screen and (max-width: calc(430px + 2*(19px + 32px + 8px))) {
+    .auth-section {
+        width: calc(100% - 2*19px);
+    }
+}
