@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const { errors, Joi, celebrate } = require('celebrate');
 
 // //
-// const cors = require('cors');
+const cors = require('./middlewares/cors');
 
 // Подключение мидлвэра с авторизацией
 const auth = require('./middlewares/auth');
@@ -32,8 +32,8 @@ const { PORT = 3000 } = process.env;
 // Подключение БД
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-// //
-// app.use(cors());
+//
+app.use(cors());
 
 // Использовать куки парсер
 app.use(cookieParser());
