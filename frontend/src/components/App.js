@@ -178,7 +178,7 @@ function App() {
   function handleAuthorize(email, password, history, onSignIn, setEmail, setPassword) {
     auth.authorize(email, password)
       .then(res => {
-        //console.log('TOKEN: ' + res.token);
+        // console.log('TOKEN: ' + res.token);
         if (res.token) {
           localStorage.setItem('token', res.token);
           auth.checkToken(res.token)

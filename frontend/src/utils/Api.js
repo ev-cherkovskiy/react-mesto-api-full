@@ -124,7 +124,9 @@ class Api {
 
 // Экземпляр API-класса
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-35',
+    // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-35',
+    baseUrl: 'https://api.ev-mesto.nomoredomains.xyz',
+    // baseUrl: '',
     headers: {
         authorization: 'db30a410-2ab7-4138-8ef8-6a0a01ce5d6f',
         'Content-Type': 'application/json',

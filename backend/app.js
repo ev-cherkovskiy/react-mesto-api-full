@@ -22,11 +22,24 @@ const {
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 
+//
+const cors = require('cors');
+
 // Инициация приложения и порта подключения
 const app = express();
 const { PORT = 3000 } = process.env;
 // Подключение БД
 mongoose.connect('mongodb://localhost:27017/mestodb');
+
+
+// // подключаем главный роутер приложения на /api
+// app.use('/api', require('../router'));
+
+// // раздаём папку с собранным фронтендом
+// app.use(express.static(path.join(__dirname, 'public')));
+
+//
+app.use(cors());
 
 // Использовать куки парсер
 app.use(cookieParser());
