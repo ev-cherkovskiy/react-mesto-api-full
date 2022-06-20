@@ -7,7 +7,8 @@ const cookieParser = require('cookie-parser');
 const { errors, Joi, celebrate } = require('celebrate');
 
 // //
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
+const cors = require('cors');
 
 // Подключение мидлвэра с авторизацией
 const auth = require('./middlewares/auth');
