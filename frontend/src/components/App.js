@@ -40,8 +40,12 @@ function App() {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardsArray]) => {
-          setCurrentUser(userData);
-          setCards(cardsArray);
+          setCurrentUser(userData.data);
+          setCards(cardsArray.data);
+          console.log('Данные пользователя:');
+          console.log(userData.data);
+          console.log('Массив карточек:');
+          console.log(cardsArray.data);
         })
         .catch(err => {
           console.log(err);
@@ -53,7 +57,7 @@ function App() {
   function handleUpdateUser(userData) {
     api.changeUserInfo(userData)
       .then(userData => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         // Закрытие попапа
         closeAllPopups();
       })
@@ -66,7 +70,7 @@ function App() {
   function handleUpdateAvatar(userData) {
     api.changeAvatar(userData)
       .then(userData => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         // Закрытие попапа
         closeAllPopups();
       })
@@ -78,11 +82,11 @@ function App() {
   // Функция, обрабатывающая нажатие на лайк
   function handleCardLike(card) {
     // Переменная, показывающая, лайкнута ли карточка пользователем
-    const isLikedByCurrentUser = card.likes.some(like => (like._id === currentUser._id));
+    const isLikedByCurrentUser = card.likes.some(like => (like === currentUser._id));
     // Запрос на изменение статуса лайка
     api.changeLikeStatus(card._id, isLikedByCurrentUser)
       .then(newCard => {
-        const newCards = cards.map(item => item._id === card._id ? newCard : item);
+        const newCards = cards.map(item => item._id === card._id ? newCard.data : item);
         setCards(newCards);
       })
       .catch(err => {
@@ -95,7 +99,7 @@ function App() {
     // Запрос на добавление карточки + обновление массива на странце
     api.addCard(cardData)
       .then(newCard => {
-        setCards([...cards, newCard]);
+        setCards([...cards, newCard.data]);
         // Закрытие попапа
         closeAllPopups();
       })

@@ -6,8 +6,8 @@ function Card({ cardData, onCardClick, onDeleteCard, onCardLike }) {
     const currentUser = React.useContext(CurrentUserContext);
 
     // Логические переменные, показывающие, создана и лайкнута ли карточка данным пользователем
-    const isCreatedByCurrentUser = (cardData.owner._id === currentUser._id);
-    const isLikedByCurrentUser = cardData.likes.some(like => (like._id === currentUser._id));
+    const isCreatedByCurrentUser = (cardData.owner === currentUser._id);
+    const isLikedByCurrentUser = !cardData.likes ? false : cardData.likes.some(like => (like === currentUser._id));
 
     // Обработчик нажатия на кнопку лайка
     function handleLikeClick() {
@@ -47,7 +47,7 @@ function Card({ cardData, onCardClick, onDeleteCard, onCardLike }) {
                     onClick={handleLikeClick}>
                 </button>
                 <p className="photo-grid__likes-counter">
-                    {cardData.likes.length}
+                    {!cardData.likes ? 0 : cardData.likes.length}
                 </p>
             </div>
         </li>

@@ -27,7 +27,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onDeleteCa
             {/* Секция с карточками */}
             <section className="photos">
                 <ul className="photo-grid">
-                    {cards.map(card => (
+                    {!cards.length ? '' : cards.map(card => (
                         <Card
                             key={card._id}
                             cardData={card}

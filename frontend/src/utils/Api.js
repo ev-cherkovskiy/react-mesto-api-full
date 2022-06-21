@@ -9,9 +9,16 @@ class Api {
         // Путь до сервера
         this._baseUrl = options.baseUrl;
         // Объект заголовков
-        this._headers = new Object(options.headers);
+        // this._headers = new Object(options.headers);
     }
 
+    //
+    _headers() {
+        return {
+            authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+        }
+    }
 
     // Приватный метод, который проверяет ответ от сервера, форматирует его или возващает ошибку
     _checkResponse(res) {
@@ -27,42 +34,43 @@ class Api {
 
     _get(dir) {
         return fetch(this._baseUrl + dir, {
-            headers: this._headers })
-        .then(this._checkResponse);
+            headers: this._headers(),
+        })
+            .then(this._checkResponse);
     }
 
     _patch(dir, bodyObject) {
         return fetch(this._baseUrl + dir, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: this._headers(),
             body: JSON.stringify(bodyObject)
         })
-        .then(this._checkResponse);
+            .then(this._checkResponse);
     }
 
     _post(dir, bodyObject) {
         return fetch(this._baseUrl + dir, {
             method: 'POST',
-            headers: this._headers,
+            headers: this._headers(),
             body: JSON.stringify(bodyObject)
         })
-        .then(this._checkResponse);
+            .then(this._checkResponse);
     }
 
     _delete(dir1, id, dir2) {
         return fetch(this._baseUrl + dir1 + id + dir2, {
             method: 'DELETE',
-            headers: this._headers
+            headers: this._headers(),
         })
-        .then(this._checkResponse);
+            .then(this._checkResponse);
     }
 
     _put(dir1, id, dir2) {
         return fetch(this._baseUrl + dir1 + id + dir2, {
             method: 'PUT',
-            headers: this._headers
+            headers: this._headers(),
         })
-        .then(this._checkResponse);
+            .then(this._checkResponse);
     }
 
     // Публичные методы используют шаблоны, приведённые выше:
@@ -127,12 +135,12 @@ const api = new Api({
     // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-35',
     baseUrl: 'https://api.ev-mesto.nomoredomains.xyz',
     // baseUrl: '',
-    headers: {
-        authorization: 'db30a410-2ab7-4138-8ef8-6a0a01ce5d6f',
-        'Content-Type': 'application/json',
-        // Дополнительный заголовок, без которого периодически возникают ошибки
-        'Access-Control-Allow-Origin': '*',
-    }
+    // headers: {
+    //     authorization: `Bearer ${localStorage.getItem('token')}`,
+    //     'Content-Type': 'application/json',
+    //     // Дополнительный заголовок, без которого периодически возникают ошибки
+    //     'Access-Control-Allow-Origin': '*',
+    // }
 });
 
 export default api;
