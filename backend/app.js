@@ -38,6 +38,12 @@ app.use(cookieParser());
 applyBodyParser(app);
 // Использовать логгер запросов
 app.use(requestLogger);
+// Краш-тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 // Использовать роутинг для входа в систему
 app.post(
   '/signin',
