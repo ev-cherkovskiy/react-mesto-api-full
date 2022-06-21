@@ -1,20 +1,18 @@
 // Подключение Express и Mongoose
 const express = require('express');
 const mongoose = require('mongoose');
+// Подключение .env файла
+require('dotenv').config();
 // Подключение парсера куки
 const cookieParser = require('cookie-parser');
 // Подключение celebrate
 const { errors, Joi, celebrate } = require('celebrate');
-
-// //
-// const cors = require('./middlewares/cors');
+// Подключение модуля для работы с CORS
 const cors = require('cors');
-
 // Подключение мидлвэра с авторизацией
 const auth = require('./middlewares/auth');
 // Подключение логгеров
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
 // Импорт функций входа в систему и создания пользователя
 const { login, createUser } = require('./controllers/users');
 // Импорт вспомогательных функций
@@ -32,10 +30,8 @@ const app = express();
 const { PORT = 3000 } = process.env;
 // Подключение БД
 mongoose.connect('mongodb://localhost:27017/mestodb');
-
-//
+// Использовать CORS
 app.use(cors());
-
 // Использовать куки парсер
 app.use(cookieParser());
 // Применить парсер тела запроса

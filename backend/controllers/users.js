@@ -8,6 +8,8 @@ const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const BadRequestError = require('../errors/BadRequestError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 // Получение массива всех пользователей
 const getUsers = (req, res, next) => {
   User.find({})
@@ -136,7 +138,11 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'secret-key', { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+        { expiresIn: '7d' },
+      );
       // return res.cookie('jwt', token, {
       //   maxAge: 3600000 * 24 * 7,
       //   httpOnly: true,
