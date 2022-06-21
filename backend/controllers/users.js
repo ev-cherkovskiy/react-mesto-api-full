@@ -137,13 +137,14 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, 'secret-key', { expiresIn: '7d' });
-      return res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-      });
+      // return res.cookie('jwt', token, {
+      //   maxAge: 3600000 * 24 * 7,
+      //   httpOnly: true,
+      // });
+      return token;
     })
-    .then(() => {
-      res.send({ message: 'Вход выполнен', isLoggedIn: true });
+    .then((token) => {
+      res.send({ message: 'Вход выполнен', token });
     })
     .catch((err) => {
       next(new UnauthorizedError(err.message));
