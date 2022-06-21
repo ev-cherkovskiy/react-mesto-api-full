@@ -179,6 +179,7 @@ function App() {
     auth.authorize(email, password)
       .then(res => {
         // console.log('TOKEN: ' + res.token);
+        console.log(res);
         if (res.token) {
           localStorage.setItem('token', res.token);
           auth.checkToken(res.token)

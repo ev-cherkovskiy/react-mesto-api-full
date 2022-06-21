@@ -143,7 +143,7 @@ const login = (req, res, next) => {
       });
     })
     .then(() => {
-      res.send({ message: 'Вход выполнен' });
+      res.send({ message: 'Вход выполнен', isLoggedIn: true });
     })
     .catch((err) => {
       next(new UnauthorizedError(err.message));
