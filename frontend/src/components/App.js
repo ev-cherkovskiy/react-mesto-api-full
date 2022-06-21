@@ -180,7 +180,8 @@ function App() {
       .then(res => {
         // console.log('TOKEN: ' + res.token);
         console.log(res);
-        if (res.token) {
+        console.log(res.cookie);
+        if (res.isLoggedIn) {
           localStorage.setItem('token', res.token);
           auth.checkToken(res.token)
             .then(res => {
